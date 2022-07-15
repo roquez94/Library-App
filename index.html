@@ -11,12 +11,24 @@
         <script src="library.js" defer></script>
         <div class = "container">
             <h1>Add Book Information Here</h1>
-            <div class="main-content">
-                <button class="newBook" onclick="addBookToLibrary()">New Book</button>
+            <div class="main-content"><!--add form here--> 
+                <form action="">
+                    <label for="title" class="title">Title</label>
+                    <input type="text" name="title" id="title" class="title">
+
+                    <label for="author" class="author">Author</label>
+                    <input type="text" name="author" id="author" class="author">
+
+                    <label for="pages" class="pages">Pages</label>
+                    <input type="text" name="pages" id="pages" class="pages">
+
+                    <label for="read" class="read">Read? Yes or No</label>
+                    <input type="text" name="read" id="read" class="read">
+                
+                    <button class="newBookButton" type="submit" onclick="addBookToLibrary()">New Book</button>
+                </form>
             </div>
             <div class="bookInfo">
-                <p id="books"></p>
-
 
             </div><!--End Book info div--> 
 

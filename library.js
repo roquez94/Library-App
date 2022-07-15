@@ -1,4 +1,4 @@
-//add form to html file to pull book info from (july 15, 2022-Roq)
+//link form from html file to pull book info from (july 15, 2022-Roq)
 let myLibrary =[];
 
 //Object Constructor for book
@@ -15,7 +15,6 @@ function Book (title, author, pages, read) {
 }
 
 //Connect to button NewBook click in Html File to Books to screen
-let newBook = new Book (newTitle, newAuthor, newPages, newRead);
 
 function addBookToLibrary () {
     //prompts user for books information
@@ -28,17 +27,16 @@ function addBookToLibrary () {
 
     let newRead = prompt("Did you read the book, type yes or no");
 
-    newBook = new Book (newTitle, newAuthor, newPages, newRead);
+   let newBook = new Book (newTitle, newAuthor, newPages, newRead);
     newBook.info();
     //adds new book info to myLibrary array
     myLibrary.push(newBook);
-    
-    document.getElementById('books').innerHTML = myLibrary.join(' ');
+    displayLibrary();   
 }
 
 //function that loops book info to display
 function displayLibrary () {
-    for (let i = 0; i < newBook.length; i++) {
+    for (let i = 0; i <myLibrary.length; i++) {
 
         let bookInfo = document.querySelector('.bookInfo');
         let title = document.createElement('h2');
@@ -46,21 +44,28 @@ function displayLibrary () {
         let pages = document.createElement('p');
         let read = document.createElement('p');
 
-        let bookTitle = newBook[i].title;
-        let bookAuthor = newBook[i].author;
-        let bookPages = newBook[i].pages;
-        let bookRead = newBook[i].read;
+        let bookTitle = myLibrary[i].title;
+        let bookAuthor = myLibrary[i].author;
+        let bookPages = myLibrary[i].pages;
+        let bookRead = myLibrary[i].read;
 
         title.textContent = bookTitle;
         author.textContent = bookAuthor;
         pages.textContent = bookPages;
         read.textContent = bookRead;
 
-        bookInfo.appendChild(title);
-        bookInfo.appendChild(author);
-        bookInfo.appendChild(pages);
-        bookInfo.appendChild(read);
+        // if (bookInfo.hasChildNodes = true){
+        //     removePreviousBookEntries(bookInfo);
+            bookInfo.appendChild(title);
+            bookInfo.appendChild(author);
+            bookInfo.appendChild(pages);
+            bookInfo.appendChild(read);
     }
 }
 
-
+//removes all child nodes of the bookInfo div
+function removePreviousBookEntries (parent){
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
