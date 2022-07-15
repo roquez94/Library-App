@@ -4,5 +4,33 @@
     border: 0;
     box-sizing: border-box;
     --theme-color:rgb(184, 98, 0);
+    --theme-color2: rgb(211, 211, 253);
+    --theme-color3: rgba(255, 166, 0, 0.863); 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  .container {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--theme-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .bookInfo {
+    height: 70%;
+    width: 70%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--theme-color3);
+    border: solid var(--theme-color2);
+  }
+
+  #books {
+    color: white;
+    font-size: 2rem;
   }
