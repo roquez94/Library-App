@@ -6,6 +6,7 @@
     --theme-color:rgb(184, 98, 0);
     --theme-color2: rgb(211, 211, 253);
     --theme-color3: rgba(255, 166, 0, 0.863); 
+    --theme-color4: rgb(253, 228, 85); 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
@@ -29,6 +30,15 @@
     align-items: center;
     background-color: var(--theme-color3);
     border: solid var(--theme-color2);
+  }
+
+  #book-list li {
+    list-style: none;
+    background-color: var(--theme-color4);
+    border: solid 5px var(--theme-color2);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
   }
 
   .newBookButton {

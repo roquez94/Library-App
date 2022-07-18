@@ -23,49 +23,49 @@ function addBookToLibrary (e) {
     e.preventDefault();
     //prompts user for books information
     //adds book to viewers screen
-    let newTitle = document.getElementById('title').value;
+    let title = document.getElementById('title').value;
 
-    let newAuthor = document.getElementById('author').value;
+    let author = document.getElementById('author').value;
 
-    let newPages =  document.getElementById('pages').value;
+    let pages =  document.getElementById('pages').value;
 
-    let newRead =  document.getElementById('read').value;
+    let read =  document.getElementById('read').value;
 
-   let newBook = new Book (newTitle, newAuthor, newPages, newRead);
-    newBook.info();
+   let newBook = new Book(title, author, pages, read);
     //adds new book info to myLibrary array
     myLibrary.push(newBook);
-    displayLibrary();   
+    displayLibrary(newBook);      
+    newBook.info();
 }
 
+let elementUl = document.getElementById('book-list');
 
 //function that loops book info to display
-function displayLibrary () {
-    for (let i = 0; i <myLibrary.length; i++) {
-
-        let bookInfo = document.querySelector('.bookInfo');
+function displayLibrary (newBook) {
         let title = document.createElement('h2');
         let author = document.createElement('p');
         let pages = document.createElement('p');
         let read = document.createElement('p');
 
-        let bookTitle = myLibrary[i].title;
-        let bookAuthor = myLibrary[i].author;
-        let bookPages = myLibrary[i].pages;
-        let bookRead = myLibrary[i].read;
+        //The list element that will hold all book info
+        let bookElement = document.createElement('li');
 
-        title.textContent = bookTitle;
-        author.textContent = bookAuthor;
-        pages.textContent = bookPages;
-        read.textContent = bookRead;
+        let bookTitle = document.createTextNode("Title: " + newBook.title);
+        let bookAuthor = document.createTextNode("Author: " + newBook.author);
+        let bookPages = document.createTextNode("Pages: " + newBook.pages);
+        let bookRead = document.createTextNode("Read: " + newBook.read);
 
-        // if (bookInfo.hasChildNodes = true){
-        //     removePreviousBookEntries(bookInfo);
-            bookInfo.appendChild(title);
-            bookInfo.appendChild(author);
-            bookInfo.appendChild(pages);
-            bookInfo.appendChild(read);
-    }
+        title.appendChild(bookTitle);
+        author.appendChild(bookAuthor);
+        pages.appendChild(bookPages);
+        read.appendChild(bookRead);
+
+        bookElement.appendChild(title);
+        bookElement.appendChild(author);
+        bookElement.appendChild(pages);
+        bookElement.appendChild(read);
+
+        elementUl.appendChild(bookElement);  
 }
 
 //removes all child nodes of the bookInfo div
