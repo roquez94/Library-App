@@ -15,17 +15,21 @@ function Book (title, author, pages, read) {
 }
 
 //Connect to button NewBook click in Html File to Books to screen
+let btn = document.getElementById('submit');
 
-function addBookToLibrary () {
+btn.addEventListener('click', addBookToLibrary);
+
+function addBookToLibrary (e) {
+    e.preventDefault();
     //prompts user for books information
     //adds book to viewers screen
-    let newTitle = prompt("Enter book's title");
+    let newTitle = document.getElementById('title').value;
 
-    let newAuthor = prompt("Enter book's author");
+    let newAuthor = document.getElementById('author').value;
 
-    let newPages = prompt("Enter number of pages in the book");
+    let newPages =  document.getElementById('pages').value;
 
-    let newRead = prompt("Did you read the book, type yes or no");
+    let newRead =  document.getElementById('read').value;
 
    let newBook = new Book (newTitle, newAuthor, newPages, newRead);
     newBook.info();
@@ -33,6 +37,7 @@ function addBookToLibrary () {
     myLibrary.push(newBook);
     displayLibrary();   
 }
+
 
 //function that loops book info to display
 function displayLibrary () {
