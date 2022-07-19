@@ -36,6 +36,7 @@ function addBookToLibrary (e) {
     myLibrary.push(newBook);
     displayLibrary(newBook);      
     newBook.info();
+    clearForm();
 }
 
 let elementUl = document.getElementById('book-list');
@@ -73,4 +74,13 @@ function removePreviousBookEntries (parent){
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
+}
+
+//clears form inputs once Button is pressed 
+function clearForm() {
+    let inputs = document.querySelectorAll("#title, #author, #pages, #read");
+    
+    inputs.forEach(input =>{
+        input.value = '';
+    });
 }
