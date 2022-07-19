@@ -48,8 +48,9 @@ function displayLibrary (newBook) {
         let pages = document.createElement('p');
         let read = document.createElement('p');
 
-        //The list element that will hold all book info
+        //The list element that will hold all book info w/ data-set 
         let bookElement = document.createElement('li');
+        bookElement.setAttribute('data-value', newBook);
 
         let bookTitle = document.createTextNode("Title: " + newBook.title);
         let bookAuthor = document.createTextNode("Author: " + newBook.author);
@@ -65,6 +66,14 @@ function displayLibrary (newBook) {
         bookElement.appendChild(author);
         bookElement.appendChild(pages);
         bookElement.appendChild(read);
+
+        //remove book from library button - takes away from display
+        let removeButton = document.createElement('button');
+        removeButton.innerText = "Remove Book";
+        removeButton.className = "remove-btn";
+        removeButton.addEventListener('click', removeItem);
+
+        bookElement.appendChild(removeButton);
 
         elementUl.appendChild(bookElement);  
 }
@@ -84,3 +93,15 @@ function clearForm() {
         input.value = '';
     });
 }
+
+//remove book function
+let removeItem = (e) => {
+    let item = e.currentTarget.parentNode;
+    let userInput = item.dataset.value //extracting the data attribute
+    item.remove();
+    let itemIndex = item.indexOf(userInput);
+    item.splice(itemIndex, 1);
+}
+
+
+
