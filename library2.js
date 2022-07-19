@@ -14,6 +14,11 @@ function Book (title, author, pages, read) {
 
 }
 
+//Toggle Read method for checkbox -- added in displayLibrary function
+Book.prototype.toggleRead = function (){
+    this.read = this.read? false : true ;
+}
+
 //Connect to button NewBook click in Html File to Books to screen
 let btn = document.getElementById('submit');
 
@@ -29,14 +34,14 @@ function addBookToLibrary (e) {
 
     let pages =  document.getElementById('pages').value;
 
-    let read =  document.getElementById('read').value;
+    let read =  document.getElementById('read').checked;
 
    let newBook = new Book(title, author, pages, read);
     //adds new book info to myLibrary array
     myLibrary.push(newBook);
     displayLibrary(newBook);      
     newBook.info();
-    clearForm();
+    clearForm(); //or use document.getElementById('form').reset();
 }
 
 let elementUl = document.getElementById('book-list');
@@ -46,7 +51,7 @@ function displayLibrary (newBook) {
         let title = document.createElement('h2');
         let author = document.createElement('p');
         let pages = document.createElement('p');
-        let read = document.createElement('p');
+        let read = document.createElement('button');
 
         //The list element that will hold all book info w/ data-set 
         let bookElement = document.createElement('li');
@@ -66,6 +71,12 @@ function displayLibrary (newBook) {
         bookElement.appendChild(author);
         bookElement.appendChild(pages);
         bookElement.appendChild(read);
+
+        //toggle for read checkbox - button
+        read.addEventListener('click', function() {
+            newBook.toggleRead();
+            read.textContent = "Read: " + newBook.read;
+        });
 
         //remove book from library button - takes away from display
         let removeButton = document.createElement('button');
@@ -102,6 +113,3 @@ let removeItem = (e) => {
     let itemIndex = item.indexOf(userInput);
     item.splice(itemIndex, 1);
 }
-
-
-
