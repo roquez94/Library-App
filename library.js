@@ -1,4 +1,6 @@
 //link form from html file to pull book info from (july 15, 2022-Roq)
+//voided out and unused, using library2.js file instead
+
 let myLibrary =[];
 
 //Object Constructor for book

@@ -1,18 +1,22 @@
-//link form from html file to pull book info from (july 15, 2022-Roq)
+//converted to use classes instead of object constructors
+
 let myLibrary =[];
 
 //Object Constructor for book
-function Book (title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-
-    this.info = function () {
-      console.log(title, author, pages, read);
+class Book {
+     constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    
+        this.info = function () {
+          console.log(title, author, pages, read);
+        }
+    
     }
-
 }
+
 
 //Toggle Read method for checkbox -- added in displayLibrary function
 Book.prototype.toggleRead = function (){
